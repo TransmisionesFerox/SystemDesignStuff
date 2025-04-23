@@ -24,7 +24,7 @@ Alternatives considered:
     - Fixed Window: Simpler but allows spikes at window edges.
 
 ### Configuration (.yaml)
-'''
+```
 rate_limits:  
   default:  
     capacity: 100    # Max requests  
@@ -32,11 +32,11 @@ rate_limits:
   premium:  
     capacity: 200  
     refill_rate: 20  
-'''
+```
 
 ### Usage
 FastAPI Middleware (python)
-'''
+```
 from fastapi import FastAPI  
 from rate_limiter import RateLimiterMiddleware  
 
@@ -46,20 +46,20 @@ app.add_middleware(RateLimiterMiddleware)
 @app.get("/protected")  
 async def protected_route():  
     return {"message": "Request allowed!"}  
-'''
+```
 
 ### Response Headers
-'''
+```
 HTTP/1.1 200 OK  
 X-RateLimit-Limit: 100  
 X-RateLimit-Remaining: 95  
 X-RateLimit-Reset: 30  # Seconds until refill  
-'''
+```
 
 ### Metrics (.yaml)
-'''
+```
 metrics:  
   prometheus:  
     enable: true  
     port: 9090  
-'''
+```
